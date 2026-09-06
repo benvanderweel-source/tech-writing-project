@@ -8,4 +8,5 @@ This portfolio demonstrates my ability to produce clear, accurate, audience-spec
 
 - **[Payment Processing Procedure Guide](payment-processing-procedure-guide.md)** - A PCI-DSS v4.0.1 compliant procedure guide for payment processing workflows.
 
-- **[Five Techniques for Difficult Calls](five-techniques-difficult-calls.md)** - A quick reference guide for frontline healthcare advocates handling difficult caller interactions. Developed from observed best practices and submitted to leadership at WelbeHealth on 7/29/26. Approved within one minute of submission and distributed to all hub leadership by request. Subsequently shared with the full team and forwarded by the hub manager to Training for potential use in new-hire onboarding.
+- **[Five Techniques for Call Handling](five-techniques-call-handling.md)** — A quick reference guide for frontline healthcare advocates. Developed from observed best practices and submitted to leadership at WelbeHealth on 7/29/26. Approved within one 
+minute of submission, distributed to all hub leadership, and forwarded to Training for potential use in new-hire onboarding. This document underwent a formal evaluation pass against a standard technical writing rubric; all findings were resolved in revision. The Git commit history reflects the full revision arc. A clean first draft would have been less persuasive evidence.
