@@ -18,7 +18,9 @@ flowchart TD
     C -->|No| ALT
     C -->|Yes| D[Access the Account]
     D --> E{Account found?}
-    E -->|No| ALT
+    E -->|No, after retry steps| ALT
+    E -->|Multiple accounts found| E1[Confirm which account<br/>or verify last 4 of SSN]
+    E1 --> F
     E -->|Yes| F[Verify the Caller]
     F --> G{Identity verified?}
     G -->|No| ALT
@@ -28,20 +30,25 @@ flowchart TD
     I -->|Debit Card| I2[Collect & confirm<br/>card details or CVV]
     I1 --> J[Take the Payment]
     I2 --> J
-    J --> K{Amount valid?}
+    J --> K{Payment amount?}
     K -->|Below minimum| K1[Confirm customer understands<br/>remaining balance] --> L
-    K -->|Above balance| K2[Offer amount up to balance] --> L
+    K -->|Above balance| K2{Customer accepts<br/>lower amount?}
+    K2 -->|Yes| L
+    K2 -->|No| ALT
     K -->|Valid| L[Payment Confirmation<br/>readback & authorization]
     L --> M[Process the Payment]
     M --> N{Declined?}
-    N -->|Yes, 1st attempt| M
+    N -->|Yes, 1st attempt| M1[Re-collect CVV if debit card,<br/>then retry]
+    M1 --> M
     N -->|Yes, 2nd attempt| ALT
     N -->|Successful| O[Confirm payment received<br/>+ explain posting timeline]
     O --> P[Closing the Call]
-    P --> END2[End call]
+    P --> END2[End call — payment complete]
 
-    ALT[Offer alternative payment options<br/>web portal / branch / mail] --> END1[End call]
+    ALT[Offer alternative payment options<br/>web portal / branch / mail] --> END1[End call — no payment taken]
 ```
+
+*This diagram shows the full call path and every point where a representative offers alternative payment options instead of continuing with a phone payment: a declined recording disclosure, an unlocatable or unverifiable account, a customer who declines a reduced payment amount, or a payment declined twice. See the sections below for the full steps at each stage, including account lookup retry logic and CVV re-collection on a declined debit card payment.*
 
 ---
 
