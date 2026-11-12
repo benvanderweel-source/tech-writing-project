@@ -9,6 +9,42 @@
 
 ---
 
+## Call Flow Overview
+
+```mermaid
+flowchart TD
+    A[Greeting] --> B[Recording Disclosure]
+    B --> C{Customer agrees<br/>to recording?}
+    C -->|No| ALT
+    C -->|Yes| D[Access the Account]
+    D --> E{Account found?}
+    E -->|No| ALT
+    E -->|Yes| F[Verify the Caller]
+    F --> G{Identity verified?}
+    G -->|No| ALT
+    G -->|Yes| H[Determine Payment Method]
+    H --> I{ACH or<br/>Debit Card?}
+    I -->|ACH| I1[Collect & confirm<br/>routing + account number]
+    I -->|Debit Card| I2[Collect & confirm<br/>card details or CVV]
+    I1 --> J[Take the Payment]
+    I2 --> J
+    J --> K{Amount valid?}
+    K -->|Below minimum| K1[Confirm customer understands<br/>remaining balance] --> L
+    K -->|Above balance| K2[Offer amount up to balance] --> L
+    K -->|Valid| L[Payment Confirmation<br/>readback & authorization]
+    L --> M[Process the Payment]
+    M --> N{Declined?}
+    N -->|Yes, 1st attempt| M
+    N -->|Yes, 2nd attempt| ALT
+    N -->|Successful| O[Confirm payment received<br/>+ explain posting timeline]
+    O --> P[Closing the Call]
+    P --> END2[End call]
+
+    ALT[Offer alternative payment options<br/>web portal / branch / mail] --> END1[End call]
+```
+
+---
+
 ## Greeting
 
 1. Introduce yourself by first name only.
