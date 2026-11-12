@@ -231,9 +231,9 @@ The confirmation must include:
 
 > EXAMPLE: "Just to confirm, Mr. Williams, you're requesting on June 1st, 2026, to make a payment of $150.00 to your account ending in 1234, using your debit card ending in 5678. Is that correct? Would you like to proceed with this payment?"
 
-       This recap serves two purposes:
-       * It allows the customer to catch mistakes before the payment is processed, helping prevent declines or payments being applied incorrectly.
-       * It protects you and your employer if a customer later disputes the payment or claims they did not authorize it.
+   This recap serves two purposes:
+   * It allows the customer to catch mistakes before the payment is processed, helping prevent declines or payments being applied incorrectly.
+   * It protects you and your employer if a customer later disputes the payment or claims they did not authorize it.
 
 7. If the customer confirms the information, process the payment.
 8. If not, identify and correct any errors before proceeding.
